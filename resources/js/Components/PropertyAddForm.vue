@@ -15,17 +15,26 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 export default {
     setup(props, { emit }) {
         const fields = ref([
-            { id: 'location', label: 'Περιοχή', type: 'select', placeholder: 'Επιλέξτε την περιοχή', required: true, value: '', options: [{ label: 'Αθήνα', value: 1 }, { label: 'Θεσσαλονίκη', value: 2 }, { label: 'Πάτρα', value: 3 }, { label: 'Ηράκλειο', value: 4 }] },
+            { id: 'location', label: 'Περιοχή', type: 'select', placeholder: 'Επιλέξτε την περιοχή', required: true, value: '', options: [] },
             { id: 'price', label: 'Τιμή', type: 'text', placeholder: 'Εισάγετε την τιμή', required: true, value: '' },
             { id: 'availability_type', label: 'Διαθεσιμότητα', type: 'select', placeholder: 'Επιλέξτε την διαθεσιμότητα', required: true, value: '', options: [{ label: 'Ενοικίαση', value: 1 }, { label: 'Πώληση', value: 2 }] },
             { id: 'area_sq', label: 'Τετραγωνικά', type: 'text', placeholder: 'Εισάγετε τα τετραγωνικά', required: true, value: '' },
         ]);
+
+        onMounted(async () => {
+            try {
+                const response = await axios.get('/location');
+                fields.value[0].options = response.data.locations.map(location => ({ label: location.title, value: location.id }));
+            } catch (error) {
+                console.error('Error fetching locations:', error);
+            }
+        });
 
         const handleSubmit = async () => {
             try {
