@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePropertyRequest;
 use App\Interfaces\Repositories\PropertyRepositoryInterface;
-use Couchbase\QueryException;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
