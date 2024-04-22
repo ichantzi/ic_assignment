@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('location_id')->constrained();;
             $table->foreignId('user_id')->constrained();;
+            $table->foreignId('location_id')->constrained();;
             $table->string('code');
             $table->tinyInteger('availability_type');
             $table->integer('area_sq');
-            $table->integer('price');
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }
