@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Foundation\Application;
@@ -23,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/location', [LocationController::class, 'index'])->name('location.get');
 
     Route::post('/property', [PropertyController::class, 'store'])->name('property.store');
     Route::delete('/property/{id}', [PropertyController::class, 'destroy'])
