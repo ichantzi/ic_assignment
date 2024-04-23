@@ -7,6 +7,8 @@
 - [Database Setup](#database-setup)
 - [Running Migrations](#running-migrations)
 - [Serve the Application](#serve-the-application)
+- [Usage](#usage)
+- [Technology Stack](#technology-stack)
 
 
 ## Installation
@@ -139,3 +141,22 @@
 
    The app will run on 127.0.0.1 (localhost)
 
+## Usage
+
+The user must firstly register with via the register form, and login every time after.
+
+After registration / login, the user is rendered to the Dashboard, where he can see all property announcements, add a new one or delete an existing property announcement.
+
+In the addition form, user can insert location, price, availability type and area squared.
+
+User can also modify his profile, by changing his username, email and password via the Profile section  (top right dropdown)
+
+## Technology Stack
+
+The technology stack used for this application was:
+
+- Laravel 11.0.6
+- Vue3
+- Laravel Insertia scaffolding
+- Laravel Breeze
+- Tailwind CSS framework
